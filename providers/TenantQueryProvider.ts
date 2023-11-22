@@ -11,13 +11,13 @@ export default class QueryBuilderProvider {
     BaseModel.$defineProperty(
       'queryTenant',
       function () {
-        return this.query().withSchema(HttpContext.get()?.tenant!)
+        return this.query({ connection: HttpContext.get()?.tenant! })
       },
       'define'
     )
 
     Database.macro('scFrom', function (table: string) {
-      return this.from(table).withSchema(HttpContext.get()?.tenant!)
+      return this.connection(HttpContext.get()?.tenant!).from(table)
     })
   }
 }

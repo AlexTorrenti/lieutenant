@@ -21,6 +21,7 @@
 import Route from '@ioc:Adonis/Core/Route'
 import Database from '@ioc:Adonis/Lucid/Database'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import User from 'App/Models/User'
 //import User from 'App/Models/User'
 
 Route.get('/', async ({ response }: HttpContextContract) => {
@@ -38,8 +39,8 @@ Route.get('/', async ({ response }: HttpContextContract) => {
 
 Route.group(() => {
   Route.get('/users', async ({}: HttpContextContract) => {
-    return await Database.scFrom('users').where('nombre', 'Pepe')
-    //return await User.queryTenant().where('nombre', 'Pepe')
+    //return await Database.query('users')
+    return await User.queryTenant()
   }).as('users')
   Route.post('/login', 'AuthController.login').as('login')
   //Route.resource('users', 'UsersController.index')
