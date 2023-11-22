@@ -44,7 +44,7 @@ const databaseConfig: DatabaseConfig = {
         disableRollbacksInProduction: true,
       },
       healthCheck: true,
-      debug: false,
+      debug: true,
     },
     tenant: {
       client: 'pg',
@@ -80,7 +80,7 @@ const databaseConfig: DatabaseConfig = {
         disableRollbacksInProduction: true,
       },
       healthCheck: true,
-      debug: false,
+      debug: true,
     },
   },
 }

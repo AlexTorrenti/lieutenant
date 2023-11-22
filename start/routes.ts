@@ -41,6 +41,7 @@ Route.group(() => {
     return await Database.scFrom('users').where('nombre', 'Pepe')
     //return await User.queryTenant().where('nombre', 'Pepe')
   }).as('users')
+  Route.post('/login', 'AuthController.login').as('login')
   //Route.resource('users', 'UsersController.index')
 })
   .prefix(':tenant')

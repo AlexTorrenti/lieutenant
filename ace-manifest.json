@@ -1,29 +1,147 @@
 {
   "commands": {
-  "migration:tenants:run": {
-    "settings": {
-      "loadApp": true,
-      "stayAlive": false
+    "migration:tenants:rollback": {
+      "settings": {
+        "loadApp": true
+      },
+      "commandPath": "./commands/RollbackTenantMigrations",
+      "commandName": "migration:tenants:rollback",
+      "description": "Rollback the last tenant migration.",
+      "args": [],
+      "aliases": [],
+      "flags": [
+        {
+          "name": "connection",
+          "propertyName": "connection",
+          "type": "string",
+          "description": "Define a custom database connection",
+          "alias": "c"
+        },
+        {
+          "name": "force",
+          "propertyName": "force",
+          "type": "boolean",
+          "description": "Explictly force to run migrations in production"
+        },
+        {
+          "name": "dry-run",
+          "propertyName": "dryRun",
+          "type": "boolean",
+          "description": "Do not run actual queries. Instead view the SQL output"
+        },
+        {
+          "name": "batch",
+          "propertyName": "batch",
+          "type": "number",
+          "description": "Define custom batch number for rollback. Use 0 to rollback to initial state"
+        },
+        {
+          "name": "compact-output",
+          "propertyName": "compactOutput",
+          "type": "boolean",
+          "description": "A compact single-line output"
+        },
+        {
+          "name": "disable-locks",
+          "propertyName": "disableLocks",
+          "type": "boolean",
+          "description": "Disable locks acquired to run migrations safely"
+        },
+        {
+          "name": "connection",
+          "propertyName": "connection",
+          "type": "string",
+          "description": "Define a custom database connection",
+          "alias": "c"
+        },
+        {
+          "name": "force",
+          "propertyName": "force",
+          "type": "boolean",
+          "description": "Explicitly force to run migrations in production"
+        },
+        {
+          "name": "dry-run",
+          "propertyName": "dryRun",
+          "type": "boolean",
+          "description": "Print SQL queries, instead of running the migrations"
+        },
+        {
+          "name": "tenant",
+          "propertyName": "tenant",
+          "type": "string",
+          "description": "Supply a tenant handle to limit the migration to a specific tenant."
+        }
+      ]
     },
-    "commandPath": "./commands/RunTenantMigrations",
-    "commandName": "migration:tenants:run",
-    "description": "",
-    "args": [],
-    "aliases": [],
-    "flags": []
-  },
-  "migration:tenants:rollback": {
-    "settings": {
-      "loadApp": true,
-      "stayAlive": false
+    "migration:tenants:run": {
+      "settings": {
+        "loadApp": true
+      },
+      "commandPath": "./commands/RunTenantMigrations",
+      "commandName": "migration:tenants:run",
+      "description": "Migrate the tenant schema.",
+      "args": [],
+      "aliases": [],
+      "flags": [
+        {
+          "name": "connection",
+          "propertyName": "connection",
+          "type": "string",
+          "description": "Define a custom database connection",
+          "alias": "c"
+        },
+        {
+          "name": "force",
+          "propertyName": "force",
+          "type": "boolean",
+          "description": "Explicitly force to run migrations in production"
+        },
+        {
+          "name": "dry-run",
+          "propertyName": "dryRun",
+          "type": "boolean",
+          "description": "Do not run actual queries. Instead view the SQL output"
+        },
+        {
+          "name": "compact-output",
+          "propertyName": "compactOutput",
+          "type": "boolean",
+          "description": "A compact single-line output"
+        },
+        {
+          "name": "disable-locks",
+          "propertyName": "disableLocks",
+          "type": "boolean",
+          "description": "Disable locks acquired to run migrations safely"
+        },
+        {
+          "name": "connection",
+          "propertyName": "connection",
+          "type": "string",
+          "description": "Define a custom database connection",
+          "alias": "c"
+        },
+        {
+          "name": "force",
+          "propertyName": "force",
+          "type": "boolean",
+          "description": "Explicitly force to run migrations in production"
+        },
+        {
+          "name": "dry-run",
+          "propertyName": "dryRun",
+          "type": "boolean",
+          "description": "Print SQL queries, instead of running the migrations"
+        },
+        {
+          "name": "tenant",
+          "propertyName": "tenant",
+          "type": "string",
+          "description": "Supply a tenant handle to limit the migration to a specific tenant."
+        }
+      ]
     },
-    "commandPath": "./commands/RollbackTenantMigrations",
-    "commandName": "migration:tenants:rollback",
-    "description": "",
-    "args": [],
-    "aliases": [],
-    "flags": []
-  },
     "dump:rcfile": {
       "settings": {},
       "commandPath": "@adonisjs/core/build/commands/DumpRc",
@@ -394,6 +512,31 @@
           "propertyName": "disableLocks",
           "type": "boolean",
           "description": "Disable locks acquired to run migrations safely"
+        },
+        {
+          "name": "connection",
+          "propertyName": "connection",
+          "type": "string",
+          "description": "Define a custom database connection",
+          "alias": "c"
+        },
+        {
+          "name": "force",
+          "propertyName": "force",
+          "type": "boolean",
+          "description": "Explicitly force to run migrations in production"
+        },
+        {
+          "name": "dry-run",
+          "propertyName": "dryRun",
+          "type": "boolean",
+          "description": "Print SQL queries, instead of running the migrations"
+        },
+        {
+          "name": "tenant",
+          "propertyName": "tenant",
+          "type": "string",
+          "description": "Supply a tenant handle to limit the migration to a specific tenant."
         }
       ]
     },
@@ -443,6 +586,31 @@
           "propertyName": "disableLocks",
           "type": "boolean",
           "description": "Disable locks acquired to run migrations safely"
+        },
+        {
+          "name": "connection",
+          "propertyName": "connection",
+          "type": "string",
+          "description": "Define a custom database connection",
+          "alias": "c"
+        },
+        {
+          "name": "force",
+          "propertyName": "force",
+          "type": "boolean",
+          "description": "Explicitly force to run migrations in production"
+        },
+        {
+          "name": "dry-run",
+          "propertyName": "dryRun",
+          "type": "boolean",
+          "description": "Print SQL queries, instead of running the migrations"
+        },
+        {
+          "name": "tenant",
+          "propertyName": "tenant",
+          "type": "string",
+          "description": "Supply a tenant handle to limit the migration to a specific tenant."
         }
       ]
     },
