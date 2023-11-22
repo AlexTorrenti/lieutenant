@@ -39,5 +39,5 @@ Server.middleware.register([() => import('@ioc:Adonis/Core/BodyParser')])
 |
 */
 Server.middleware.registerNamed({
-  tenant: () => import('App/Middleware/Tenant'),
+  tenant: () => import('App/Middleware/TenantHandler'),
 })
