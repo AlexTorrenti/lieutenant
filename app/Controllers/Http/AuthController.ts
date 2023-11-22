@@ -1,5 +1,4 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { getTenant } from 'App/Helpers/TenantHelper'
 import User from 'App/Models/User'
 
 export default class AuthController {
@@ -10,10 +9,9 @@ export default class AuthController {
     if (!user) return response.notFound({ data: 'User not found' })
 
     try {
-      getTenant(request.ctx?.tenant!)
       const guard = auth.use('api')
-      guard.tokenProvider.setConnection('tenant')
-      guard.provider.setConnection('tenant')
+      guard.tokenProvider.setConnection(request.ctx?.tenant!)
+      guard.provider.setConnection(request.ctx?.tenant!)
       const token = await guard.attempt(userId, password, { expiresIn: '30 days' })
       if (auth.user) {
         return { token: token, data: auth.user }
