@@ -1,6 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Tenant from 'App/Models/Tenant'
-import TenantConnectionService from 'App/Services/TenantConnectionService'
+//import TenantConnectionService from 'App/Services/TenantConnectionService'
 
 export default class TenantHandler {
   public async handle(ctx: HttpContextContract, next: () => Promise<void>) {
@@ -9,8 +9,9 @@ export default class TenantHandler {
       await Tenant.findByOrFail('slug', ctx.params.tenant)
       console.log('Scope for ' + ctx.params.tenant)
       ctx.tenant = ctx.params.tenant
-      await TenantConnectionService.hasConnect(ctx.params.tenant)
+      //await TenantConnectionService.hasConnect(ctx.params.tenant)
     }
+
     await next()
   }
 }

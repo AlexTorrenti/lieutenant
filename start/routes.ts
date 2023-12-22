@@ -39,7 +39,7 @@ Route.get('/', async ({ response }: HttpContextContract) => {
 
 Route.group(() => {
   Route.get('/users', async ({}: HttpContextContract) => {
-    //return await Database.query('users')
+    //return await Database.scFrom('users')
     return await User.queryTenant()
   }).as('users')
   Route.post('/login', 'AuthController.login').as('login')

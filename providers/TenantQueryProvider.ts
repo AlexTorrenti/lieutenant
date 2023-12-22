@@ -8,6 +8,7 @@ export default class QueryBuilderProvider {
     const HttpContext = this.app.container.resolveBinding('Adonis/Core/HttpContext')
     const { Database } = this.app.container.resolveBinding('Adonis/Lucid/Database')
 
+    /* THIS CODE WORKS FOR THE PREVIOUS APPROACH (creating a new connection for each tenant)
     BaseModel.$defineProperty(
       'queryTenant',
       function () {
@@ -15,9 +16,25 @@ export default class QueryBuilderProvider {
       },
       'define'
     )
+    */
 
+    BaseModel.$defineProperty(
+      'queryTenant',
+      function () {
+        console.log(HttpContext.get()?.tenant!)
+        return this.query().withSchema(HttpContext.get()?.tenant!)
+      },
+      'define'
+    )
+
+    /* THIS CODE WORKS FOR THE PREVIOUS APPROACH (creating a new connection for each tenant)
     Database.macro('scFrom', function (table: string) {
       return this.connection(HttpContext.get()?.tenant!).from(table)
+    })
+    */
+
+    Database.macro('scFrom', function (table: string) {
+      return this.from(table).withSchema(HttpContext.get()?.tenant!)
     })
   }
 }
